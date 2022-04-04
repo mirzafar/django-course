@@ -1,0 +1,31 @@
+{% extends 'api/base.html' %}
+
+
+{% block content %}
+    <a href="/api/coursecategory/add"> Добавить новый</a>
+    <table border="1">
+        <tr>
+            <td>ID</td>
+            <td>Название</td>
+            <td> Управление</td>
+        </tr>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.title }}</td>
+            <td>
+                <form action="/api/coursecategory/" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="action" value="delete">
+                    <input type="hidden" name="id" value="{{ item.id }}">
+                    <button>Удалить</button>
+
+                    <a href="/api/coursecategory/{{ item.id }}/">Изменить</a>
+
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </table>
+{% endblock %}

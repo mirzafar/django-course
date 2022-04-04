@@ -1,0 +1,141 @@
+{% extends 'base.html'%}
+{##}
+{#{% if active_user %}#}
+{#ID->{{ active_user.id }}.<br>#}
+{#Last Name->{{ active_user.last_name }}.<br>#}
+{#First Name->{{ active_user.first_name }}.<br>#}
+{#Middle Name->{{ active_user.middle_name }}.<br>#}
+{#Phone->{{ active_user.phone }}.<br>#}
+{#IIN->{{ active_user.iin }}.<br>#}
+{#Email->{{ active_user.email }}.<br>#}
+{##}
+{#    <a href="/edit">Edit</a><br><br>#}
+{#    <a href="/logout">logout</a><br><br>#}
+{##}
+{#{% else %}#}
+{#    <h2>#}
+{#    Hech narsa topilmadi#}
+{#    </h2>#}
+{#    <a href="/login">LOGIN</a>#}
+{##}
+{#{% endif %}#}
+{##}
+
+{% block content %}
+
+
+
+
+
+
+
+    <div class="middle main-info">
+        <div class="main-info-left">
+            <h3>Онлайн школа IT профессий</h3>
+            <h5>и сообщество програмиистов</h5>
+            <h6>Обучаем веб програмиирование, создание игр и разработка ПО. Проходите курсы, решайте задачи, просматривайте новости и становитесь настоящими мастерами программирования</h6>
+            <a href="#" class="btn btn-danger">Онлайн обучение</a>
+        </div>
+        <div class="main-info-right">
+            <img src="media/images/glav.svg">
+        </div>
+    </div>
+
+
+    <div class="line index-video">
+        <div class="middle">
+            <div class="index-video-title">
+                <h3>Видеокурсы <a href="/course" class="btn btn-danger">Все курсы ({{ course_count }})</a></h3>
+                <p class="index-video-desc">В нашем сообществе программистов на данный момент представлено 84 курса, большинство из которых являются бесплатными.
+                    Вы можете приступить к изучению как платных, так и бесплатных курсов прямо сейчас. Ниже представлено несколько случайных курсов на сайте.</p>
+            </div>
+
+            <div class="index-video-cont">
+                {% for course in courses  %}
+                <div class="index-video-cont-item">
+                    <div class="index-video-cont-item-top">
+                        <img src="media/{{ course.logo }}" alt="">
+                        <span>#{{ course.category.title }}</span>
+                    </div>
+                    <div class="index-video-cont-item-bottom">
+                        <a href="/course/{{ course.id }}/">  {{ course.title}}
+                       </a>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+
+
+            <p>
+                <a href="/course" class="btn btn-danger">Просмотреть все курсы ({{ course_count }})</a>
+            </p>
+
+
+        </div>
+    </div>
+
+
+    <div class="line middle">
+        <div class="index-last-news">
+            <h3>Новые статьи</h3>
+            <div class="index-last-news-cont">
+                {% for n in new_list %}
+                <div class="index-last-news-cont-item">
+                    <div class="index-last-news-cont-item-top">
+                        <img src="media/{{ n.logo }}" alt="">
+                    </div>
+                    <div class="index-last-news-cont-item-bottom">
+                        <div class="index-last-news-cont-item-bottom-cont">
+                            <p>{{ n.mini_description }}</p>
+                        </div>
+                        <div class="index-last-news-cont-item-bottom-info">
+                            {{ n.views_count }} {{ n.create_datetime}}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <p><a href="#" class="btn btn-danger">Посмотреть больше</a></p>
+        </div>
+    </div>
+
+
+
+    <div class="line middle">
+        <div class="index-last-news">
+            <h3>Популярные статьи</h3>
+            <div class="index-last-news-cont">
+                {% for n in popular_new_list %}
+                <div class="index-last-news-cont-item">
+                    <div class="index-last-news-cont-item-top">
+                        <img src="media/{{ n.logo }}" alt="">
+                    </div>
+                    <div class="index-last-news-cont-item-bottom">
+                        <div class="index-last-news-cont-item-bottom-cont">
+                            <p>{{ n.mini_description }}</p>
+                        </div>
+                        <div class="index-last-news-cont-item-bottom-info">
+                            {{ n.views_count }} {{ n.create_datetime}}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <p><a href="#" class="btn btn-danger">Посмотреть больше</a></p>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+    <div class="line footer">
+        <div class="middle">
+            © Все права защищены
+        </div>
+    </div>
+
+
+</body>
+</html>

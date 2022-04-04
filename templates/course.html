@@ -1,0 +1,49 @@
+{% extends 'base.html'%}
+{% block content %}
+
+    <div class="line">
+        <div class="middle">
+            <div class="course-top">
+                <h1>Курсы программирования</h1>
+                <div class="course-top-link">
+                    <a href="#" data-id="0" class="btn btn-outline-dark">Все</a>
+                    {% for cat in all_categories %}
+                    <a href="#" data-id={{ cat.id }} class="btn btn-outline-dark"> {{ cat.title }}</a>
+                    {% endfor %}
+
+                </div>
+            </div>
+            <div class="course-cont">
+                <div class="course-video-cont">
+                    {% for course in all_courses %}
+                    <div class="course-video-cont-item" data-category="{{ course.category.id }}">
+                        <div class="course-video-cont-item-top">
+                            <img src="/media/{{ course.logo }}" alt="">
+                            <span>#{{ course.category.title }}</span>
+                        </div>
+                        <div class="course-video-cont-item-bottom">
+                            <a href="/course/{{ course.id }}">{{ course.title}}</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $('.course-top-link a').click(function(){
+            var current_id = $(this).data("id");
+            $('.course-top-link a').removeClass('active');
+            $(this).addClass('active');
+            $('.course-video-cont-item').hide();
+            $('.course-video-cont-item[data-category="'+ current_id + '"]').show();
+            if (current_id == "0"){
+                $('.course-video-cont-item').show();
+            }
+        })
+    </script>
+
+
+
+    {% endblock %}

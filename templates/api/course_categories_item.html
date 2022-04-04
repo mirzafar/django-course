@@ -1,0 +1,25 @@
+{% extends 'api/base.html' %}
+
+
+{% block content %}
+    <form action="/api/coursecategory/add/" method="POST">
+    {% csrf_token %}
+        <table border="1">
+            <tr>
+                <td>Название</td>
+                <td><input type="text" value="" name="title"></td>
+            </tr>
+
+            <tr>
+                <td>Статус</td>
+                <td><input type="number" value="0" name="status"></td>
+            </tr>
+            <tr>
+                <tr>
+                    <td><input type="hidden" name="action" value="add"></td>
+                    <td><button>Сохранить</button></td>
+                </tr>
+            </tr>
+        </table>
+    </form>
+{% endblock %}

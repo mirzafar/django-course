@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="middle">
+        {% if active_user %}
+
+            {% if post_errors %}
+                {% for pe in post_errors %}
+                    <h4 style="color: red; padding: 10px">
+
+                        {% if pe == 'IIN_FORMAT_ERROR' %} Формат ИИН неправилный {% endif %}
+                        {% if pe == 'EMAIL_REGISTERED' %} Почта зарегистрировано {% endif %}
+                        {% if pe == 'EMAIL_FORMAT_ERROR' %} Формат почты неправилный {% endif %}
+                        {% if pe == 'PHONE_REGISTERED' %} Номер телефона зарегистрирован {% endif %}
+                        {% if pe == 'PHONE_FORMAT_ERROR' %} Формат номера телефона неправилный {% endif %}
+                        {% if pe == 'ACTIVE_PASSWORD_INCORRECT' %} Неправилный текущий пароль {% endif %}
+                        {% if pe == 'NEW_PASSWORD_INCORRECT' %} Новые пароли не совпадаеть {% endif %}
+
+
+                    </h4>
+                {% endfor %}
+            {% endif %}
+            <form action="/profile/edit/" method="POST">
+            {% csrf_token %}
+            <table class="edit-form">
+                <tr>
+                    <td>Фамилия</td>
+                    <td><input class="form-input" type="text" name="last_name" value="{{ active_user.last_name }}"></td>
+                </tr>
+                <tr>
+                    <td>Имя</td>
+                    <td><input  class="form-input" type="text" name="first_name" value="{{ active_user.first_name }}"></td>
+                </tr>
+                <tr>
+                    <td>Отчества</td>
+                    <td><input  class="form-input" type="text" name="middle_name" value="{{ active_user.middle_name }}"></td>
+                </tr>
+                <tr>
+                    <td>ИИН</td>
+                    <td><input  class="form-input" type="text" name="iin" value="{{ active_user.iin }}"></td>
+                </tr>
+                <tr>
+                    <td>Электронная почта</td>
+                    <td><input  class="form-input" type="text" name="email" value="{{ active_user.email }}"></td>
+                </tr>
+                <tr>
+                    <td>Номер телефона</td>
+                    <td><input  class="form-input" type="text" name="phone" value="{{ active_user.phone }}"></td>
+                </tr>
+                <tr class="js-edit-passwords" style="display: none">
+                    <td>Текущий пароль</td>
+                    <td><input  class="form-input" type="password" name="active_password" value=""></td>
+                </tr>
+                <tr class="js-edit-passwords" style="display: none">
+                    <td>Новый пароль</td>
+                    <td><input  class="form-input" type="password" name="new_password" value=""></td>
+                </tr>
+                <tr class="js-edit-passwords" style="display: none">
+                    <td>Повторите новый пароль</td>
+                    <td><input  class="form-input" type="password" name="new_password_repeat" value=""></td>
+                </tr>
+                <tr>
+                    <td>Действия</td>
+                    <td>
+                        <a href="#" class="btn btn-outline-danger js-change-password">Поменять пароль</a>
+                        <button class="btn btn-outline-success">Сохранить</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+        {% else %}
+
+        {% endif %}
+</div>
+
+    <script>
+
+        $('.js-change-password').click(function () {
+            $('.js-edit-passwords').show(1000);
+            $(this).hide();
+        })
+
+    </script>
+
+
+{% endblock %}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/media/js/cropper/jquery.js"></script>
+    <script src="/media/js/cropper/jquery.min.js"></script>
+    <link rel="stylesheet" href="/media/css/cropper/bootstrap.min.css">
+    <link rel="stylesheet" href="/media/css/cropper/css-cropper.css">
+    <link rel="stylesheet" href="/media/css/cropper/cropper.css">
+    <link rel="stylesheet" href="/media/css/cropper/dropzone.css">
+    <link rel="stylesheet" href="/media/css/cropper/cropper%20filter-photo.css">
+    <script src="/media/js/cropper/cropper.js"></script>
+    <script src="/media/js/cropper/bootstrap.min.js"></script>
+    <script src="/media/js/cropper/js-dropzone.js"></script>
+    <script src="/media/js/cropper/js-cropper.js"></script>
+    <script src="/media/js/cropper/cropper-filter-photo.js"></script>
+</head>
+<body>
+    <form action="/api/courses/{{ item.id }}/" method="POST">
+    {% csrf_token %}
+
+    <form class="container" align="center">
+    <div class="row">
+        <div class="col-md-4 css-ll">
+            <div class="image_area">
+                <form method="post">
+                    <label for="upload_image">
+                        <img src="/media/images/logo2.jpg" id="uploaded_image" class="img-responsive img-circle log-img" />
+                        <div class="overlay">
+                            <div class="text">Нажмите, чтобы изменить изображение профиля</div>
+                        </div>
+                        <input type="file" name="image" class="image" id="upload_image" style="display:none" />
+                    </label>
+                </form>
+            </div>
+        </div>
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Обрезать изображение перед загрузкой</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="img-container">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <img src="" id="sample_image" />
+                            </div>
+                            <div class="col-md-4">
+                                <div class="preview"></div>
+                            </div>
+                        </div>
+                        <div class="container-filter">
+                            <div class="container-text">
+                                <div class="container-p">
+                                    <p>Filter</p>
+                                </div>
+                                <div class="filter">
+                                <div class="inputBox">
+                                    <span>grayscale</span>
+                                    <input type="range" min="0" max="100" value="0" id="grayscale">
+                                </div>
+                                <div class="inputBox">
+                                    <span>sepia</span>
+                                    <input type="range" min="0" max="100" value="0" id="sepia">
+                                </div>
+                                <div class="inputBox">
+                                    <span>blur</span>
+                                    <input type="range" min="0" max="100" value="0" id="blur">
+                                </div>
+                                <div class="inputBox">
+                                    <span>invert</span>
+                                    <input type="range" min="0" max="100" value="0" id="invert">
+                                </div>
+                                <div class="inputBox">
+                                    <span>opacity</span>
+                                    <input type="range" min="0" max="100" value="100" id="opacity">
+                                </div>
+                                <div class="inputBox">
+                                    <span>brightness</span>
+                                    <input type="range" min="0" max="100" value="100" id="brightness">
+                                </div>
+                                <div class="inputBox">
+                                    <span>contrast</span>
+                                    <input type="range" min="0" max="100" value="100" id="contrast">
+                                </div>
+                                <div class="inputBox">
+                                    <span>saturate</span>
+                                    <input type="range" min="0" max="100" value="100" id="saturate">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="crop" class="btn btn-primary">Вырезать</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </form>
+</body>
+</html>

@@ -1,0 +1,38 @@
+.container-filter{
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	padding-bottom: 90px;
+}
+.container-filter .filter{
+	margin-right: 40px;
+}
+.container-filter .container-p {
+	border-bottom: 1px solid #999;
+}
+.container-filter .filter .inputBox{
+	margin: 10px 0;
+}
+.container-filter .filter .inputBox span{
+	display: block;
+	color: #333;
+	font-size: 20px;
+	margin: 10px 0;
+}
+.container-filter .filter .inputBox input{
+	-webkit-appearance: none;
+	height: 10px;
+	width: 300px;
+	outline: none;
+	background: #999;
+	border-radius: 50px;
+}
+.container-filter .filter .inputBox input::-webkit-slider-thumb{
+	-webkit-appearance: none;
+	height: 20px;
+	width: 20px;
+	outline: none;
+	background: coral;
+	border-radius: 50px;
+	cursor: pointer;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/media/css/api.css">
+    <script src="/media/js/jquery.js"></script>
+    <script src="/media/js/uploader.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/dropzone/dist/dropzone.css" />
+    <link href="https://unpkg.com/cropperjs/dist/cropper.css" rel="stylesheet"/>
+    <script src="https://unpkg.com/dropzone"></script>
+    <script src="https://unpkg.com/cropperjs"></script>
+    <link href="/media/css/cropper/cropper.css" rel="stylesheet">
+    <script src="/media/js/cropper/cropper.js"></script>
+</head>
+<body>
+
+<div class="api-cont">
+    <div class="api-cont-left">
+        <ul>
+            <li>
+                <a href="/api/"> На начало</a>
+            </li>
+            <li>
+                <a href="/api/coursecategory/">Категории курса</a>
+            </li>
+            <li>
+                <a href="/api/courses/">Курсы</a>
+            </li>
+            <li>
+                <a href="/api/news/">Новости</a>
+            </li>
+        </ul>
+    </div>
+    <div class="api-cont-right">
+
+        {% block content %}
+        {% endblock %}
+
+    </div>
+</div>
+
+
+
+
+</body>
+</html>
